@@ -1,0 +1,45 @@
+<html><body>
+    {% include "superior/barra.html" %}
+    <h1 style="color: darkblue">
+    Bienvenido a la Primera pag con Django con Plantillas
+    <h1>
+    <h2 style="color: rgba(139, 0, 53, 0.966)">
+        {% comment %}
+            Este es un 
+            comentario de 
+            varias lineas
+        {% endcomment %}
+        {% if nombre_mio == 'Martin' %}
+            <p>Hola a todos soy autor de la pagina web</p>
+        {% else %}
+            <p>El autor no se encuentra en linea</p>
+        {% endif %}
+    </h2>
+    <p1>
+        Mi nombre es: {{nombre_mio.upper}} {{apellido_mio.upper}}
+    </p1>
+    <br />
+    <p1>
+        La fecha de este d&iacute;a es: {{momento_actual.day}}/{{momento_actual.month}}/{{momento_actual.year}}
+    </p1>
+    <br />
+    <p1><strong>
+        Los temas son:
+    </strong></p1>
+    <p>
+        <ul>
+        <!-- evalua si exixte Y se tiene informacion -->
+        {% if temas %}
+            {% for elTema in temas %}
+                <li>{{elTema}}</li>
+            {% endfor %}
+        {% else %}
+            <p>No hay elementos que mostrar</p>
+        {% endif %}
+        </ul>
+    </p>
+    <br />
+    <p1>
+        El tema de hoy es: <strong>{{temas.1}}</strong>
+    </p1>
+<body><html>

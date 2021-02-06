@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <h1 style="background-color: darkblue; color:greenyellow; text-align: center;">
+            Maldito Punto y Coma
+        </h1>
+        {% include "superior/barra.html" %}
+        <h3 style="text-align: center">Cursos de informatica</h3>
+        {% block content %}
+        {% endblock %}
+        <p style="background-color: darkblue; color:greenyellow; text-align: right">Cursos gratuitos. Gracias por su visita</p>
+    </body>
+<html>

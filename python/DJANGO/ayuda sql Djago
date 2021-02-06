@@ -1,0 +1,95 @@
+In [1]: from gestionPedidos.models import Articulos
+
+In [3]: art=Articulos(nombre='mesa', seccion='decoracion', precio=90)
+
+In [4]: art.save()
+
+In [5]: art2=Articulos(nombre='camisa', seccion='confeccion', precio=70)
+
+In [6]: art2.save()
+
+In [8]: art3=Articulos.objects.create(nombre='taladro', seccion='ferreteria', precio=650)
+
+In [9]: art.precio=95
+
+In [10]: art.save()
+
+In [11]: art4=Articulos.objects.get(id=2)
+
+In [12]: art4.delete()
+Out[12]: (1, {'gestionPedidos.Articulos': 1})
+
+In [13]: lista=Articulos.objects.all()
+
+In [14]: lista
+Out[14]: <QuerySet [<Articulos: Articulos object (1)>, <Articulos: Articulos object (3)>]>
+
+In [15]: lista.query.__str__()
+Out[15]: 'SELECT "gestionPedidos_articulos"."id", "gestionPedidos_articulos"."nombre", "gestionPedidos_articulos"."seccion", "gestionPedidos_articulos"."precio" FROM "gestionPedidos_articulos"'
+
+In [8]: art2=Articulos(nombre='lampara', seccion='decoracion', precio=50)
+
+In [9]: art2.save()
+
+In [10]: art2=Articulos(nombre='pantalon', seccion='confeccion', precio=55)
+
+In [11]: save()
+'' was not found in history, as a file, url, nor in the user namespace.
+
+In [12]: art2.save()
+
+In [13]: art2=Articulos(nombre='pelota', seccion='deporte', precio=40)
+
+In [14]: art2.save()
+
+In [15]: art2=Articulos(nombre='raqueta', seccion='deporte', precio=50)
+
+In [16]: art2.save()
+
+In [17]: art2=Articulos(nombre='muñeca', seccion='jugueteria', precio=30)
+
+In [18]: art2.save()
+
+In [19]: art2=Articulos(nombre='tren', seccion='jugueteria', precio=45)
+
+In [20]: art2.save()
+
+
+###FILTROS###
+
+
+In [21]: Articulos.objects.filter(seccion='deporte')
+Out[21]: <QuerySet [<Articulos: Articulos object (6)>, <Articulos: Articulos object (7)>]>
+
+In [2]: Articulos.objects.filter(seccion='deporte')
+Out[2]: <QuerySet [<Articulos: El nobre es pelota la seccion es deporte y el precio es 40>, <Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>]>
+
+In [3]: Articulos.objects.filter(nombre='mesa', seccion='decoracion')
+Out[3]: <QuerySet [<Articulos: El nobre es mesa la seccion es decoracion y el precio es 90>]>
+
+In [5]: Articulos.objects.filter(seccion='deporte', precio__gte=40)
+Out[5]: <QuerySet [<Articulos: El nobre es pelota la seccion es deporte y el precio es 40>, <Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>]>
+
+In [6]:  Articulos.objects.filter(seccion='deporte', precio__gte=45)
+Out[6]: <QuerySet [<Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>]>
+
+In [7]: Articulos.objects.filter(seccion='deporte', precio__lte=45)
+Out[7]: <QuerySet [<Articulos: El nobre es pelota la seccion es deporte y el precio es 40>]>
+
+In [8]: Articulos.objects.filter(seccion='deporte', precio__gt=40)
+Out[8]: <QuerySet [<Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>]>
+
+In [9]: Articulos.objects.filter(seccion='deporte', precio__lt=50)
+Out[9]: <QuerySet [<Articulos: El nobre es pelota la seccion es deporte y el precio es 40>]>
+
+In [11]: Articulos.objects.filter(seccion='deporte', precio__range=(30, 60))
+Out[11]: <QuerySet [<Articulos: El nobre es pelota la seccion es deporte y el precio es 40>, <Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>]>
+
+In [13]:  Articulos.objects.filter(precio__range=(45, 100))
+Out[13]: <QuerySet [<Articulos: El nobre es camisa la seccion es confeccion y el precio es 70>, <Articulos: El nobre es mesa la seccion es decoracion y el precio es 90>, <Articulos: El nobre es lampara la seccion es decoracion y el precio es 50>, <Articulos: El nobre es pantalon la seccion es confeccion y el precio es 55>, <Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>, <Articulos: El nobre es tren la seccion es jugueteria y el precio es 45>]>
+
+In [14]: Articulos.objects.filter(precio__range=(45, 100)).order_by('precio')
+Out[14]: <QuerySet [<Articulos: El nobre es tren la seccion es jugueteria y el precio es 45>, <Articulos: El nobre es lampara la seccion es decoracion y el precio es 50>, <Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>, <Articulos: El nobre es pantalon la seccion es confeccion y el precio es 55>, <Articulos: El nobre es camisa la seccion es confeccion y el precio es 70>, <Articulos: El nobre es mesa la seccion es decoracion y el precio es 90>]>
+
+In [15]: Articulos.objects.filter(precio__range=(45, 100)).order_by('-precio')
+Out[15]: <QuerySet [<Articulos: El nobre es mesa la seccion es decoracion y el precio es 90>, <Articulos: El nobre es camisa la seccion es confeccion y el precio es 70>, <Articulos: El nobre es pantalon la seccion es confeccion y el precio es 55>, <Articulos: El nobre es lampara la seccion es decoracion y el precio es 50>, <Articulos: El nobre es raqueta la seccion es deporte y el precio es 50>, <Articulos: El nobre es tren la seccion es jugueteria y el precio es 45>]>
