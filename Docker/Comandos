@@ -1,0 +1,65 @@
+#------Comandos frecuentes de Docker------
+
+"""Los contenedores son para Maquinas Virtuales como los threads son para los procesos."""
+
+#Lifecycle
+docker create crea un contenedor pero no lo comienza.
+docker rename permite renombrar al contenedor.
+docker run crea y comienza un contenedor en una operación.
+docker rm borra un contenedor.
+docker update actualiza los recursos limitados de un contenedor.
+
+#Comenzando y deteniendo
+docker start comienza un contenedor si se cayó o salió.
+docker stop detiene un contenedor.
+docker restart detiene y comienza un contenedor.
+docker pause pausa un contenedor corriendo, "lo congela". 
+docker unpause quita la pausa de un contenedor corriendo.
+docker wait bloquea hasta que un contenedor corriendo se detiene.
+docker kill envía una SIGKILL a un contenedor corriendo.
+docker attach se conecta a un contenedor corriendo.
+
+#Info
+docker ps muestra los contenedores corriendo.
+docker logs obtiene logs de un container.
+docker inspect observa toda la info en un contenedor.
+docker events obtiene eventos de un contenedor.
+docker port muestra el puerto publico de un contenedor.
+docker top muestra los procesos corriendo en un contenedor.
+docker stats muestra las estadisticas de recursos usados por contenedor.
+docker diff muestra los archivos cambiados en el FS del contenedor.
+docker ps -a    muestra todos los contenedores corriendo y detenidos.
+docker stats --all muestra una lista de los contenedores corriendo.
+
+
+#-------Redes--------------
+"""Docker tiene una función de redes. No mucho se sabe sobre él, así que éste es un buen lugar para ampliar la hoja del cheat. Hay una nota diciendo que es una buena manera de configurar los contenedores docker para que hablen entre ellos sin usar puertos. Consulte cómo trabajar con redes para obtener más detalles."""
+
+#Lifecycle
+docker network create
+docker network rm
+
+#Info
+docker network ls
+docker network inspect
+Connection
+docker network connect
+docker network disconnect
+
+
+#---------Images-----------
+"""Images son solo templates para contenedores de docker."""
+
+#Lifecycle
+docker images muestra todas las imagenes
+docker import crea una imagen de un tarball.
+docker build crea imagen de un  Dockerfile.
+docker commit crea imagen de un contenedor, pausandolo temporalmente si esta corriendo.
+docker rmi remueve una imagen.
+docker load carga una imagen de un archivo tar como STDIN, incluyendo imagenes y tags.
+docker save salva una imagen a un archivo tar a STDOUT con todas las capas padre, tags y versiones.
+
+#Info
+docker history muestra el historial de una imagen.
+docker tag taggea una imagen a un nombre asignado.
+

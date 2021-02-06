@@ -1,0 +1,9 @@
+#comando de arranque
+sudo docker run --name=mysql-n -p 3308:3306 -v /computacion/mysql-57/:/var/lib/mysql -d --restart=always mysql/mysql-server:5.7
+	#'--name' es para el nombre de la instancia
+	#'-p' es el puerto de (entrada y salida ) al cual voy a redirecionar la instancia
+	#'-v' carpeta donde se carga
+
+#comandos de cierre 
+"no se puede borarr un contenedor que se esta ejecutando"
+/home/martin/Facultad/Computacion
