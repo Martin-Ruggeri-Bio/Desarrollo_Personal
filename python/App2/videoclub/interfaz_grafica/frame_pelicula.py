@@ -19,10 +19,10 @@ class Pelicula():
         cuadroNombre.grid(row=1, column=1, padx=10, pady=10)
 
         cuadroApellido = Entry(self.framePelicula, textvariable=self.genero)
-        cuadroApellido.grid(row=3, column=1, padx=10, pady=10)
+        cuadroApellido.grid(row=2, column=1, padx=10, pady=10)
 
         cuadroDireccion = Entry(self.framePelicula, textvariable=self.duracion)
-        cuadroDireccion.grid(row=4, column=1, padx=10, pady=10)
+        cuadroDireccion.grid(row=3, column=1, padx=10, pady=10)
 
         cuadroDireccion = Entry(self.framePelicula, textvariable=self.actores)
         cuadroDireccion.grid(row=4, column=1, padx=10, pady=10)

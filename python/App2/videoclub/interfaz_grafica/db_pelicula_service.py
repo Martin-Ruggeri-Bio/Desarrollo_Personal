@@ -3,8 +3,8 @@ from frame_pelicula import Pelicula
 import sqlite3
 
 
-class PeliculaServiceDDBB():
-    def conexionBBDD(self):
+class PeliculaServiceDB():
+    def conexionDB(self):
         miConexion = sqlite3.connect("VideClub")
         miCursor = miConexion.cursor()
         try:
@@ -18,11 +18,11 @@ class PeliculaServiceDDBB():
                 )
             ''')
             messagebox.showinfo(
-                "BBDD", "Tabla Datos_Pelicula creada con exito")
+                "DB", "Tabla Datos_Pelicula creada con exito")
         except sqlite3.OperationalError:
-            messagebox.showwarning("¡Atencion!", "La BBDD ya existe")
+            messagebox.showwarning("¡Atencion!", "La DB ya existe")
 
-    def cerrarConexionBBDD(self, framePelicula):
+    def cerrarConexionDB(self, framePelicula):
         valor = messagebox.askquestion(
             "Salir", "¿Deseas salir de la aplicacion?")
         if valor == "yes":
@@ -45,7 +45,7 @@ class PeliculaServiceDDBB():
             (datos)
         )
         miConexion.commit()
-        messagebox.showinfo("BBDD", "Registro insertado con exito")
+        messagebox.showinfo("DB", "Registro insertado con exito")
 
     def leer(self):
         miConexion = sqlite3.connect("VideClub")
@@ -75,7 +75,7 @@ class PeliculaServiceDDBB():
             "WHERE ID=" + Pelicula.keyID.get(), (datos)
         )
         miConexion.commit()
-        messagebox.showinfo("BBDD", "Registro actualizado con exito")
+        messagebox.showinfo("DB", "Registro actualizado con exito")
 
     def eliminar(self):
         miConexion = sqlite3.connect("VideClub")
@@ -84,4 +84,4 @@ class PeliculaServiceDDBB():
             "DELETE FROM Datos_Pelicula WHERE ID=" +
             Pelicula.keyID.get())
         miConexion.commit()
-        messagebox.showinfo("BBDD", "Registro borrado con exito")
+        messagebox.showinfo("DB", "Registro borrado con exito")

@@ -3,8 +3,8 @@ from frame_actor import Actor
 import sqlite3
 
 
-class ActorServiceDDBB():
-    def conexionBBDD(self):
+class ActorServiceDB():
+    def conexionDB(self):
         miConexion = sqlite3.connect("VideClub")
         miCursor = miConexion.cursor()
         try:
@@ -16,11 +16,11 @@ class ActorServiceDDBB():
                     Edad INTERGER,
                 )
             ''')
-            messagebox.showinfo("BBDD", "BBDD creada con exito")
+            messagebox.showinfo("DB", "DB creada con exito")
         except sqlite3.OperationalError:
-            messagebox.showwarning("¡Atencion!", "La BBDD ya existe")
+            messagebox.showwarning("¡Atencion!", "La DB ya existe")
 
-    def cerrarConexionBBDD(self, frameActor):
+    def cerrarConexionDB(self, frameActor):
         valor = messagebox.askquestion(
             "Salir", "¿Deseas salir de la aplicacion?")
         if valor == "yes":
@@ -41,7 +41,7 @@ class ActorServiceDDBB():
             (datos)
         )
         miConexion.commit()
-        messagebox.showinfo("BBDD", "Tabla Datos_Pelicula creada con exito")
+        messagebox.showinfo("DB", "Tabla Datos_Pelicula creada con exito")
 
     def leer(self):
         miConexion = sqlite3.connect("VideClub")
@@ -69,7 +69,7 @@ class ActorServiceDDBB():
             "WHERE ID=" + Actor.keyID.get(), (datos)
         )
         miConexion.commit()
-        messagebox.showinfo("BBDD", "Registro actualizado con exito")
+        messagebox.showinfo("DB", "Registro actualizado con exito")
 
     def eliminar(self):
         miConexion = sqlite3.connect("VideClub")
@@ -78,4 +78,4 @@ class ActorServiceDDBB():
             "DELETE FROM Datos_Actor WHERE ID=" +
             Actor.keyID.get())
         miConexion.commit()
-        messagebox.showinfo("BBDD", "Registro borrado con exito")
+        messagebox.showinfo("DB", "Registro borrado con exito")

@@ -20,8 +20,8 @@ class LabelPelicula():
         self.tituloLabel.grid(
             row=1, column=0, sticky="e", padx=10, pady=10)
         self.generoLabel.grid(
-            row=3, column=0, sticky="e", padx=10, pady=10)
+            row=2, column=0, sticky="e", padx=10, pady=10)
         self.duracionLabel.grid(
-            row=4, column=0, sticky="e", padx=10, pady=10)
+            row=3, column=0, sticky="e", padx=10, pady=10)
         self.actoresLabel.grid(
             row=4, column=0, sticky="e", padx=10, pady=10)

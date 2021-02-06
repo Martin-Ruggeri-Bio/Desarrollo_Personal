@@ -1,6 +1,6 @@
 from tkinter import Tk, Frame, Button, messagebox, Menu
-from bbdd_Actor_service import ActorServiceDDBB
-from bbdd_pelicula_service import PeliculaServiceDDBB
+from db_Actor_service import ActorServiceDB
+from db_pelicula_service import PeliculaServiceDB
 
 
 def salirAplicacion(self):
@@ -12,31 +12,33 @@ def salirAplicacion(self):
 root = Tk()
 barraMenu = Menu(root)
 root.config(menu=barraMenu, width=300, height=300)
+actor = ActorServiceDB()
+pelicula = PeliculaServiceDB()
 
-bbddMenu = Menu(barraMenu, tearoff=0)
-bbddMenu.add_command(
-    label="Conectar a Pelicula", command=PeliculaServiceDDBB.conexionBBDD)
-bbddMenu.add_command(
-    label="Conectar a Actor", command=ActorServiceDDBB.conexionBBDD)
-bbddMenu.add_command(
+dbMenu = Menu(barraMenu, tearoff=0)
+dbMenu.add_command(
+    label="Conectar a Pelicula", command=pelicula.conexionDB)
+dbMenu.add_command(
+    label="Conectar a Actor", command=actor.conexionDB)
+dbMenu.add_command(
     label="salir", command=salirAplicacion)
 
 ayudaMenu = Menu(barraMenu, tearoff=0)
 ayudaMenu.add_command(label="Licencia")
 ayudaMenu.add_command(label="Acerca de ...")
 
-barraMenu.add_cascade(label="BBDD", menu=bbddMenu)
+barraMenu.add_cascade(label="DB", menu=dbMenu)
 barraMenu.add_cascade(label="Ayuda", menu=ayudaMenu)
 
 eleccion = Frame(root)
 eleccion.pack()
 
-botonCrear = Button(
-    eleccion, text="Actor", command=ActorServiceDDBB.conexionBBDD)
-botonCrear.grid(row=1, column=0, sticky="e", padx=10, pady=10)
+botonActor = Button(
+    eleccion, text="Actor", command=actor.conexionDB)
+botonActor.grid(row=1, column=0, sticky="e", padx=10, pady=10)
 
-botonLeer = Button(
-    eleccion, text="Pelicula", command=PeliculaServiceDDBB.conexionBBDD)
-botonLeer.grid(row=1, column=1, sticky="e", padx=10, pady=10)
+botonPelicula = Button(
+    eleccion, text="Pelicula", command=pelicula.conexionDB)
+botonPelicula.grid(row=1, column=1, sticky="e", padx=10, pady=10)
 
 root.mainloop()

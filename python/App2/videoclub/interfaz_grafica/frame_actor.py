@@ -18,10 +18,10 @@ class Actor():
         cuadroNombre.grid(row=1, column=1, padx=10, pady=10)
 
         cuadroApellido = Entry(self.frameActor, textvariable=self.apellido)
-        cuadroApellido.grid(row=3, column=1, padx=10, pady=10)
+        cuadroApellido.grid(row=2, column=1, padx=10, pady=10)
 
         cuadroDireccion = Entry(self.frameActor, textvariable=self.edad)
-        cuadroDireccion.grid(row=4, column=1, padx=10, pady=10)
+        cuadroDireccion.grid(row=3, column=1, padx=10, pady=10)
 
     def label(self):
         actorLabel = LabelActor(self.frameActor)

@@ -18,6 +18,6 @@ class LabelActor():
         self.nombreLabel.grid(
             row=1, column=0, sticky="e", padx=10, pady=10)
         self.apellidoLabel.grid(
-            row=3, column=0, sticky="e", padx=10, pady=10)
+            row=2, column=0, sticky="e", padx=10, pady=10)
         self.direccionLabel.grid(
-            row=4, column=0, sticky="e", padx=10, pady=10)
+            row=3, column=0, sticky="e", padx=10, pady=10)

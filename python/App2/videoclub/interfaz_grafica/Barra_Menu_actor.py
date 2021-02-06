@@ -1,5 +1,5 @@
 from tkinter import Tk, Menu, Frame
-from bbdd_Actor_service import ActorServiceDDBB
+from db_Actor_service import ActorServiceDB
 from frame_actor import Actor
 
 
@@ -8,30 +8,31 @@ root = Tk()
 frameActor = Frame(root)
 frameActor.pack()
 barraMenu = Menu(frameActor)
-frameActor.config(menu=barraMenu, width=300, height=300)
+# frameActor.config(menu=barraMenu, width=300, height=300)
+actor = ActorServiceDB()
 
-bbddMenu = Menu(barraMenu, tearoff=0)
-bbddMenu.add_command(
-    label="Conectar a Actor", command=ActorServiceDDBB.conexionBBDD)
-bbddMenu.add_command(
-    label="salir", command=ActorServiceDDBB.cerrarConexionBBDD(frameActor))
+dbMenu = Menu(barraMenu, tearoff=0)
+dbMenu.add_command(
+    label="Conectar a Actor", command=actor.conexionDB)
+dbMenu.add_command(
+    label="salir", command=actor.cerrarConexionDB(frameActor))
 
 borrarMenu = Menu(barraMenu, tearoff=0)
 borrarMenu.add_command(
     label="Borrar campos de actores",
-    command=ActorServiceDDBB.borrarCampos)
+    command=actor.borrarCampos)
 
 crudMenu = Menu(barraMenu, tearoff=0)
 crudMenu.add_command(
-    label="Crear Actor", command=ActorServiceDDBB.crear)
+    label="Crear Actor", command=actor.crear)
 crudMenu.add_command(
-    label="Leer Actor", command=ActorServiceDDBB.leer)
+    label="Leer Actor", command=actor.leer)
 crudMenu.add_command(
-    label="Actualizar Actor", command=ActorServiceDDBB.actualizar)
+    label="Actualizar Actor", command=actor.actualizar)
 crudMenu.add_command(
-    label="Borrar Actor", command=ActorServiceDDBB.eliminar)
+    label="Borrar Actor", command=actor.eliminar)
 
-barraMenu.add_cascade(label="BBDD", menu=bbddMenu)
+barraMenu.add_cascade(label="DB", menu=dbMenu)
 barraMenu.add_cascade(label="Borrar", menu=borrarMenu)
 barraMenu.add_cascade(label="CRUD", menu=crudMenu)
 
