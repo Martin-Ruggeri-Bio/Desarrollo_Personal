@@ -4,29 +4,6 @@ import sqlite3
 
 
 class PeliculaServiceDB():
-    def conexionDB(self):
-        miConexion = sqlite3.connect("VideClub")
-        miCursor = miConexion.cursor()
-        try:
-            miCursor.execute(
-                '''CREATE TABLE Datos_Pelicula(
-                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Titulo VARCHAR(50),
-                    Duracion INTERGER,
-                    Genero VARCHAR(50)
-                    Actores VARCHAR(100),
-                )
-            ''')
-            messagebox.showinfo(
-                "DB", "Tabla Datos_Pelicula creada con exito")
-        except sqlite3.OperationalError:
-            messagebox.showwarning("¡Atencion!", "La DB ya existe")
-
-    def cerrarConexionDB(self, framePelicula):
-        valor = messagebox.askquestion(
-            "Salir", "¿Deseas salir de la aplicacion?")
-        if valor == "yes":
-            framePelicula.destroy()
 
     def borrarCampos(self):
         Pelicula.keyID.set("")
