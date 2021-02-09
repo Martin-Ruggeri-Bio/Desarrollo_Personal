@@ -1,48 +1,51 @@
-from tkinter import Tk, Frame, Button, messagebox, Menu
+from tkinter import Tk, Frame, Button, Menu
 from conexion_bd import ConexionDB
 
 
 class App_VideoClub():
-    def __init__(self):
-        self.root = Tk()
+    def __init__(self, root):
+        self.root = root
         self.actor = 1
         self.pelicula = 0
-        self.barraMenu = Menu(self.root)
-        self.eleccion = Frame(self.root)
-        self.root.mainloop()
+        self.mimenu = self.menu()
+        self.botones = self.button()
 
     def menu(self):
-        dbMenu = Menu(self.barraMenu, tearoff=0)
-        dbMenu.add_command(
-            label="Conectar a Pelicula", command=ConexionDB.conectar_tablas(
-                self.root, self.pelicula))
-        dbMenu.add_command(
-            label="Conectar a Actor", command=ConexionDB.conectar_tablas(
-                self.root, self.actor))
-        dbMenu.add_command(
-            label="salir", command=self.salirAplicacion)
+        barraMenu = Menu(self.root)
+        salir = Menu(barraMenu, tearoff=0)
+        ayudaMenu = Menu(barraMenu, tearoff=0)
 
-        ayudaMenu = Menu(self.barraMenu, tearoff=0)
+        salir.add_command(
+            label="Actor", command=ConexionDB(
+                self.root).conectar_tablas(self.actor))
+        salir.add_command(
+            label="Pelicula", command=ConexionDB(
+                self.root).conectar_tablas(self.pelicula))
+        salir.add_command(
+            label="salir", command=ConexionDB(self.root).cerrarConexionDB)
+
         ayudaMenu.add_command(label="Licencia")
         ayudaMenu.add_command(label="Acerca de ...")
 
-        self.barraMenu.add_cascade(label="DB", menu=dbMenu)
-        self.barraMenu.add_cascade(label="Ayuda", menu=ayudaMenu)
+        barraMenu.add_cascade(label="DB", menu=salir)
+        barraMenu.add_cascade(label="Ayuda", menu=ayudaMenu)
 
     def button(self):
-        self.eleccion.pack()
+        botones = Frame(self.root)
+        botones.pack()
 
         botonActor = Button(
-            self.eleccion, text="Actor", command=ConexionDB.conectar_tablas(
-                self.root, self.pelicula))
+            botones, text="Actor", command=ConexionDB(
+                self.root).conectar_tablas(self.actor))
         botonActor.grid(row=1, column=0, sticky="e", padx=10, pady=10)
 
         botonPelicula = Button(
-            self.eleccion, text="Pelicula", command=ConexionDB.conectar_tablas(
-                self.root, self.actor))
+            botones, text="Pelicula", command=ConexionDB(
+                self.root).conectar_tablas(self.pelicula))
         botonPelicula.grid(row=1, column=1, sticky="e", padx=10, pady=10)
 
-    def salirAplicacion(self):
-        valor = messagebox.askquestion("Salir", "¿Deseas salir?")
-        if valor == "yes":
-            self.root.destroy()
+
+if __name__ == "__main__":
+    root = Tk()
+    app = App_VideoClub(root)
+    root.mainloop

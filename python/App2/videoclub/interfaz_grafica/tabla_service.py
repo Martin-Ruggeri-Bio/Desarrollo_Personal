@@ -6,17 +6,16 @@ from frame_pelicula import Pelicula
 
 
 class TablaService():
-    def __init__(self, root, eleccion):
+    def __init__(self, root):
         self.miframe = Frame(root)
         self.miframe.pack()
         self.barraMenu = Menu(self.miframe)
-        self.eleccion = eleccion
         self.salir = Menu(self.barraMenu, tearoff=0)
         self.borrarMenu = Menu(self.barraMenu, tearoff=0)
         self.crudMenu = Menu(self.barraMenu, tearoff=0)
 
-    def frame(self):
-        if self.eleccion:
+    def frame(self, frame_elegido):
+        if frame_elegido:
             self.tabla = ActorServiceDB()
             self.actorFrame = Actor(self.miframe)
             self.actorFrame.cuadros()
@@ -26,6 +25,11 @@ class TablaService():
             self.peliculaFrmae = Pelicula(self.miframe)
             self.peliculaFrmae.cuadros()
             self.peliculaFrmae.label()
+
+    def command_menu(self):
+        self.barraMenu.add_cascade(label="salir", menu=self.salir)
+        self.barraMenu.add_cascade(label="Borrar", menu=self.borrarMenu)
+        self.barraMenu.add_cascade(label="CRUD", menu=self.crudMenu)
 
     def command_salir(self):
         self.salir.add_command(
@@ -44,8 +48,3 @@ class TablaService():
             label="Actualizar", command=self.tabla.actualizar)
         self.crudMenu.add_command(
             label="Borrar", command=self.tabla.eliminar)
-
-    def command_menu(self):
-        self.barraMenu.add_cascade(label="salir", menu=self.salir)
-        self.barraMenu.add_cascade(label="Borrar", menu=self.borrarMenu)
-        self.barraMenu.add_cascade(label="CRUD", menu=self.crudMenu)
