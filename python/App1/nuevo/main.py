@@ -1,8 +1,17 @@
-from interfaz import Interfaz_Menu
+from barraMenu import BarraMenu
 from tkinter import Tk
 
+
+class App():
+    def __init__(self):
+        self.root = Tk()
+        self.barraMenu = BarraMenu(self.root)
+
+    def InterfazGrafica(self):
+        self.barraMenu.opciones_de_menu()
+        self.root.mainloop()
+
+
 if __name__ == "__main__":
-    root = Tk()
-    menu = Interfaz_Menu(root)
-    menu.opciones_de_menu()
-    root.mainloop()
+    administracion = App()
+    administracion.InterfazGrafica()
