@@ -16,25 +16,25 @@ class BarraMenuActor():
         self.root.config(menu=self.barraMenuActores, width=600, height=600)
         self.camposActor = DB_serviceActor(self.root)
         self.bbddMenu.add_command(
-            label="Actor", command=self.camposActor.conexionDB)
+            label="Conectar", command=self.camposActor.conexionDB)
         self.bbddMenu.add_command(
-            label="Salir de Actor",
+            label="Salir",
             command=self.camposActor.salirAplicacion)
         self.borrarMenu.add_command(
-            label="Borrar campos de Actor",
+            label="Borrar campos",
             command=self.camposActor.borrarCampos)
         self.crudMenu.add_command(
-            label="Crear Actor", command=self.camposActor.crear)
+            label="Crear", command=self.camposActor.crear)
         self.crudMenu.add_command(
-            label="Leer Actor", command=self.camposActor.leer)
+            label="Leer", command=self.camposActor.leer)
         self.crudMenu.add_command(
             label="Actualizar", command=self.camposActor.actualizar)
         self.crudMenu.add_command(
-            label="Borrar Actor", command=self.camposActor.eliminar)
+            label="Borrar", command=self.camposActor.eliminar)
 
         self.barraMenuActores.add_cascade(
-            label="BBDD Actor", menu=self.bbddMenu)
+            label="BBDD", menu=self.bbddMenu)
         self.barraMenuActores.add_cascade(
-            label="Borrar Actor", menu=self.borrarMenu)
+            label="Borrar", menu=self.borrarMenu)
         self.barraMenuActores.add_cascade(
-            label="CRUD Actor", menu=self.crudMenu)
+            label="CRUD", menu=self.crudMenu)

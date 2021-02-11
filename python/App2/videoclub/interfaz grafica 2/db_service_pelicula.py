@@ -30,7 +30,7 @@ class DB_servicePelicula():
                     ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     Titulo VARCHAR(50),
                     Duracion INTERGER,
-                    Genero VARCHAR(50)
+                    Genero VARCHAR(50),
                     Actores VARCHAR(100)
                 )
             ''')

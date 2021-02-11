@@ -27,7 +27,7 @@ class DB_serviceActor():
             self.miCursor.execute(
                 '''CREATE TABLE Datos_Actores(
                     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Nombre_Actor VARCHAR(50),
+                    Nombre VARCHAR(50),
                     Apellido VARCHAR(50),
                     Edad INTERGER
                 )

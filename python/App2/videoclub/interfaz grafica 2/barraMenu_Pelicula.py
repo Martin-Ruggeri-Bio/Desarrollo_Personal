@@ -16,25 +16,25 @@ class BarraMenuPelicula():
         self.root.config(menu=self.barraMenuPelicula, width=700, height=700)
         self.camposPelicula = DB_servicePelicula(self.root)
         self.bbddMenu.add_command(
-            label="Pelicula", command=self.camposPelicula.conexionDB)
+            label="Conectar", command=self.camposPelicula.conexionDB)
         self.bbddMenu.add_command(
-            label="Salir de Pelicula",
+            label="Salir",
             command=self.camposPelicula.salirAplicacion)
         self.borrarMenu.add_command(
-            label="Borrar campos de Pelicula",
+            label="Borrar campos",
             command=self.camposPelicula.borrarCampos)
         self.crudMenu.add_command(
-            label="Crear Pelicula", command=self.camposPelicula.crear)
+            label="Crear", command=self.camposPelicula.crear)
         self.crudMenu.add_command(
-            label="Leer Pelicula", command=self.camposPelicula.leer)
+            label="Leer", command=self.camposPelicula.leer)
         self.crudMenu.add_command(
             label="Actualizar", command=self.camposPelicula.actualizar)
         self.crudMenu.add_command(
-            label="Borrar Pelicula", command=self.camposPelicula.eliminar)
+            label="Eliminar", command=self.camposPelicula.eliminar)
 
         self.barraMenuPelicula.add_cascade(
-            label="BBDD Pelicula", menu=self.bbddMenu)
+            label="BBDD", menu=self.bbddMenu)
         self.barraMenuPelicula.add_cascade(
-            label="Borrar Pelicula", menu=self.borrarMenu)
+            label="Borrar", menu=self.borrarMenu)
         self.barraMenuPelicula.add_cascade(
-            label="CRUD Pelicula", menu=self.crudMenu)
+            label="CRUD", menu=self.crudMenu)
