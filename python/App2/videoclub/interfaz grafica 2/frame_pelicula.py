@@ -3,13 +3,13 @@ from tkinter import Entry, Label
 
 class CuadrosTextos():
     def __init__(self, miFrame, miID, miTitulo, miGenero,
-                 miDuracion, miActores):
+                 miDuracion, miActor):
         self.miFrame = miFrame
         self.cuadroID = Entry(self.miFrame, textvariable=miID)
         self.cuadroTitulo = Entry(self.miFrame, textvariable=miTitulo)
         self.cuadroGenero = Entry(self.miFrame, textvariable=miGenero)
         self.cuadroDuracion = Entry(self.miFrame, textvariable=miDuracion)
-        self.cuadroActores = Entry(self.miFrame, textvariable=miActores)
+        self.cuadroActores = Entry(self.miFrame, textvariable=miActor)
 
     def grid(self):
         self.cuadroID.grid(row=0, column=2, padx=10, pady=10)
@@ -29,7 +29,7 @@ class Labels():
         self.tituloLabel = Label(self.miFrame, text="Titulo:")
         self.generoLabel = Label(self.miFrame, text="Genero:")
         self.duracionLabel = Label(self.miFrame, text="Duracion:")
-        self.actoresLabel = Label(self.miFrame, text="Actores:")
+        self.actoresLabel = Label(self.miFrame, text="ID_Actor:")
 
     def grid(self):
         self.idLabel.grid(row=0, column=1, sticky="e", padx=10, pady=10)

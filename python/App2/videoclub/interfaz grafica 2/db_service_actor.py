@@ -26,7 +26,7 @@ class DB_serviceActor():
         try:
             self.miCursor.execute(
                 '''CREATE TABLE Datos_Actores(
-                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ID_Actor INTEGER PRIMARY KEY AUTOINCREMENT,
                     Nombre VARCHAR(50),
                     Apellido VARCHAR(50),
                     Edad INTERGER
@@ -57,14 +57,15 @@ class DB_serviceActor():
     def leer(self):
         try:
             self.miCursor.execute(
-                "SELECT * FROM Datos_Actores WHERE ID=" + self.miID.get())
+                "SELECT * FROM Datos_Actores WHERE ID_Actor=" +
+                self.miID.get())
             # nos devuelve un array con los registros
             elActor = self.miCursor.fetchall()
-            for usuario in elActor:
-                self.miID.set(usuario[0])
-                self.miNombre.set(usuario[1])
-                self.miApellido.set(usuario[2])
-                self.miEdad.set(usuario[3])
+            for registro in elActor:
+                self.miID.set(registro[0])
+                self.miNombre.set(registro[1])
+                self.miApellido.set(registro[2])
+                self.miEdad.set(registro[3])
             self.miConexion.commit()
         except sqlite3.OperationalError:
             messagebox.showwarning("¡Atencion!", "No ingreso un ID")
@@ -73,13 +74,16 @@ class DB_serviceActor():
         datos = self.miNombre.get(), self.miApellido.get(), self.miEdad.get()
         self.miCursor.execute(
             "UPDATE Datos_Actores SET Nombre=?, Apellido=?, Edad=?" +
-            "WHERE ID=" + self.miID.get(), (datos)
+            "WHERE ID_Actor=" + self.miID.get(), (datos)
         )
         self.miConexion.commit()
         messagebox.showinfo("BBDD", "Registro actualizado con exito")
 
     def eliminar(self):
         self.miCursor.execute(
-            "DELETE FROM Datos_Actores WHERE ID=" + self.miID.get())
+            "DELETE FROM Datos_Actores WHERE ID_Actor=" + self.miID.get())
         self.miConexion.commit()
         messagebox.showinfo("BBDD", "Registro borrado con exito")
+
+    def listar(self):
+        pass

@@ -12,10 +12,10 @@ class DB_servicePelicula():
         self.miTitulo = StringVar()
         self.miGenero = StringVar()
         self.miDuracion = StringVar()
-        self.miActores = StringVar()
+        self.miActor = StringVar()
         self.cuadroTextos = CuadrosTextos(
             self.miFrame, self.miID, self.miTitulo, self.miGenero,
-            self.miDuracion, self.miActores)
+            self.miDuracion, self.miActor)
         self.cuadroTextos.grid()
         self.cuadroTextos.pack()
         self.labels = Labels(self.miFrame)
@@ -27,11 +27,12 @@ class DB_servicePelicula():
         try:
             self.miCursor.execute(
                 '''CREATE TABLE Datos_Pelicula(
-                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ID_Pelicula INTEGER PRIMARY KEY AUTOINCREMENT,
                     Titulo VARCHAR(50),
                     Duracion INTERGER,
                     Genero VARCHAR(50),
-                    Actores VARCHAR(100)
+                    ID_Actor INTERGER,
+                    FOREIGN KEY (ID_Actor) REFERENCES Datos_Actores(ID_Actor)
                 )
             ''')
             messagebox.showinfo("BBDD", "BBDD creada con exito")
@@ -48,11 +49,11 @@ class DB_servicePelicula():
         self.miTitulo.set("")
         self.miGenero.set("")
         self.miDuracion.set("")
-        self.miActores.set("")
+        self.miActor.set("")
 
     def crear(self):
         datos = self.miTitulo.get(), self.miGenero.get(),\
-            self.miDuracion.get(), self.miActores.get()
+            self.miDuracion.get(), self.miActor.get()
         self.miCursor.execute(
             "INSERT INTO Datos_Pelicula VALUES(NULL, ?, ?, ?, ?)",
             (datos)
@@ -66,23 +67,23 @@ class DB_servicePelicula():
                 "SELECT * FROM Datos_Pelicula WHERE ID=" + self.miID.get())
             # nos devuelve un array con los registros
             laPelicula = self.miCursor.fetchall()
-            for usuario in laPelicula:
-                self.miID.set(usuario[0])
-                self.miTitulo.set(usuario[1])
-                self.miGenero.set(usuario[2])
-                self.miDuracion.set(usuario[3])
-                self.miActores.set(usuario[4])
+            for registro in laPelicula:
+                self.miID.set(registro[0])
+                self.miTitulo.set(registro[1])
+                self.miGenero.set(registro[2])
+                self.miDuracion.set(registro[3])
+                self.miActor.set(registro[4])
             self.miConexion.commit()
         except sqlite3.OperationalError:
             messagebox.showwarning("¡Atencion!", "No ingreso un ID")
 
     def actualizar(self):
         datos = self.miTitulo.get(), self.miGenero.get(),\
-            self.miDuracion.get(), self.miActores.get()
+            self.miDuracion.get(), self.miActor.get()
         self.miCursor.execute(
             "UPDATE Datos_Pelicula SET\
                 Titulo=?, Genero=?, Duracion=?,\
-                Actores=?" +
+                Actor=?" +
             "WHERE ID=" + self.miID.get(), (datos)
         )
         self.miConexion.commit()
@@ -93,3 +94,6 @@ class DB_servicePelicula():
             "DELETE FROM Datos_Pelicula WHERE ID=" + self.miID.get())
         self.miConexion.commit()
         messagebox.showinfo("BBDD", "Registro borrado con exito")
+
+    def listar(self):
+        pass
