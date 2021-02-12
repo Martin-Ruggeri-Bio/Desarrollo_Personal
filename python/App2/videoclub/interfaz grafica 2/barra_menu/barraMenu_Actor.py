@@ -1,5 +1,5 @@
 from tkinter import Menu
-from db_service_actor import DB_serviceActor
+from db_service.db_service_actor import DB_serviceActor
 
 
 class BarraMenuActor():
@@ -16,7 +16,7 @@ class BarraMenuActor():
         self.root.config(menu=self.barraMenuActores, width=600, height=600)
         self.camposActor = DB_serviceActor(self.root)
         self.bbddMenu.add_command(
-            label="Conectar", command=self.camposActor.conexionDB)
+            label="Conectar_DB", command=self.camposActor.crearDB)
         self.bbddMenu.add_command(
             label="Salir",
             command=self.camposActor.salirAplicacion)

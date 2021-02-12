@@ -1,6 +1,5 @@
-
 from tkinter import Tk
-from botones import Botones
+from botones.botones import Botones
 
 
 class App():

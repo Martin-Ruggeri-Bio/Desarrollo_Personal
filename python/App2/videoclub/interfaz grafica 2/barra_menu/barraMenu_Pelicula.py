@@ -1,5 +1,5 @@
 from tkinter import Menu
-from db_service_pelicula import DB_servicePelicula
+from db_service.db_service_pelicula import DB_servicePelicula
 
 
 class BarraMenuPelicula():
@@ -16,7 +16,7 @@ class BarraMenuPelicula():
         self.root.config(menu=self.barraMenuPelicula, width=700, height=700)
         self.camposPelicula = DB_servicePelicula(self.root)
         self.bbddMenu.add_command(
-            label="Conectar", command=self.camposPelicula.conexionDB)
+            label="Conectar_DB", command=self.camposPelicula.crearDB)
         self.bbddMenu.add_command(
             label="Salir",
             command=self.camposPelicula.salirAplicacion)

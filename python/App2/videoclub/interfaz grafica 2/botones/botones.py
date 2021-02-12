@@ -1,6 +1,6 @@
 from tkinter import Frame, Button
-from barraMenu_Actor import BarraMenuActor
-from barraMenu_Pelicula import BarraMenuPelicula
+from barra_menu.barraMenu_Actor import BarraMenuActor
+from barra_menu.barraMenu_Pelicula import BarraMenuPelicula
 
 
 class Botones():

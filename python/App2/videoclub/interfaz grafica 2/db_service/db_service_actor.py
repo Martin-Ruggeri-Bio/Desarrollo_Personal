@@ -1,5 +1,5 @@
 from tkinter import messagebox, StringVar, Frame
-from frame_actor import Labels, CuadrosTextos
+from frame.frame_actor import Labels, CuadrosTextos
 import sqlite3
 
 
@@ -21,7 +21,7 @@ class DB_serviceActor():
         self.labels.grid()
         self.labels.pack()
 
-    def conexionDB(self):
+    def crearDB(self):
         self.miCursor = self.miConexion.cursor()
         try:
             self.miCursor.execute(
@@ -32,9 +32,11 @@ class DB_serviceActor():
                     Edad INTERGER
                 )
             ''')
-            messagebox.showinfo("BBDD", "BBDD creada con exito")
+            messagebox.showinfo(
+                "BBDD", "Se creo una tabla nueva llamada Datos_Actores")
         except sqlite3.OperationalError:
-            messagebox.showwarning("¡Atencion!", "La BBDD ya existe")
+            messagebox.showinfo(
+                "BBDD", "Conexion con la tabla Datos_Actores realizada")
 
     def salirAplicacion(self):
         valor = messagebox.askquestion("Salir", "¿Deseas salir?")
@@ -84,6 +86,3 @@ class DB_serviceActor():
             "DELETE FROM Datos_Actores WHERE ID_Actor=" + self.miID.get())
         self.miConexion.commit()
         messagebox.showinfo("BBDD", "Registro borrado con exito")
-
-    def listar(self):
-        pass
