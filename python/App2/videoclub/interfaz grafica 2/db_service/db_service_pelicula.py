@@ -104,3 +104,18 @@ class DB_servicePelicula():
             "DELETE FROM Datos_Pelicula WHERE ID_Pelicula=" + self.miID.get())
         self.miConexion.commit()
         messagebox.showinfo("BBDD", "Registro borrado con exito")
+
+    def listarAccion(self):
+        pass
+
+    def listarRomance(self):
+        pass
+
+    def listarDrama(self):
+        pass
+
+    def listarCien_Fi(self):
+        pass
+
+    def listarTerror(self):
+        pass

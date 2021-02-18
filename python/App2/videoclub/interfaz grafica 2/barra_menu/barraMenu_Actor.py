@@ -10,6 +10,7 @@ class BarraMenuActor():
         self.bbddMenu = Menu(self.barraMenuActores, tearoff=0)
         self.borrarMenu = Menu(self.barraMenuActores, tearoff=0)
         self.crudMenu = Menu(self.barraMenuActores, tearoff=0)
+        self.listarMenu = Menu(self.barraMenuActores, tearoff=0)
 
     def opciones_de_menu_actor(self):
         self.botones.destroy()
@@ -20,9 +21,11 @@ class BarraMenuActor():
         self.bbddMenu.add_command(
             label="Salir",
             command=self.camposActor.salirAplicacion)
+
         self.borrarMenu.add_command(
             label="Borrar campos",
             command=self.camposActor.borrarCampos)
+
         self.crudMenu.add_command(
             label="Crear", command=self.camposActor.crear)
         self.crudMenu.add_command(
@@ -32,9 +35,18 @@ class BarraMenuActor():
         self.crudMenu.add_command(
             label="Borrar", command=self.camposActor.eliminar)
 
+        self.listarMenu.add_command(
+            label="Actores",
+            command=self.camposActor.ListarActores)
+        self.listarMenu.add_command(
+            label="Actrices",
+            command=self.camposActor.ListarActrices)
+
         self.barraMenuActores.add_cascade(
             label="BBDD", menu=self.bbddMenu)
         self.barraMenuActores.add_cascade(
             label="Borrar", menu=self.borrarMenu)
         self.barraMenuActores.add_cascade(
             label="CRUD", menu=self.crudMenu)
+        self.barraMenuActores.add_cascade(
+            label="Listar", menu=self.listarMenu)

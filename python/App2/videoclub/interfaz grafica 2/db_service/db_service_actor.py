@@ -1,4 +1,4 @@
-from tkinter import messagebox, StringVar, Frame
+from tkinter import messagebox, StringVar, IntVar, Frame
 from frame.frame_actor import Labels, CuadrosTextos
 import sqlite3
 
@@ -12,9 +12,10 @@ class DB_serviceActor():
         self.miNombre = StringVar()
         self.miApellido = StringVar()
         self.miEdad = StringVar()
+        self.sexOpcion = IntVar()
         self.cuadroTextos = CuadrosTextos(
             self.miFrame, self.miID, self.miNombre,
-            self.miApellido, self.miEdad)
+            self.miApellido, self.miEdad, self.sexOpcion)
         self.cuadroTextos.grid()
         self.cuadroTextos.pack()
         self.labels = Labels(self.miFrame)
@@ -86,3 +87,9 @@ class DB_serviceActor():
             "DELETE FROM Datos_Actores WHERE ID_Actor=" + self.miID.get())
         self.miConexion.commit()
         messagebox.showinfo("BBDD", "Registro borrado con exito")
+
+    def ListarActores(self):
+        pass
+
+    def ListarActrices(self):
+        pass
